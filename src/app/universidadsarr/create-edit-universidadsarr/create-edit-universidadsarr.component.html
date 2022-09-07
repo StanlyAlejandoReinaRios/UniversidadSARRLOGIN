@@ -1,0 +1,42 @@
+<!-- Vista Del Usuario -->
+
+<form>
+  <div class="mb-3">
+    <label for="tipoUsuarioId" class="form-label">Tipo Usuario</label>
+    <!-- <input type="text" class="form-control" name="tipoUsuarioId" [(ngModel)]="tipoUsuarioId"
+    *nfIf="universidadsarr.id!=0"> -->
+    <select class="form-control" name="tipoUsuarioId" id="tipoUsuarioId" [(ngModel)]
+    = "tipoUsuarioId" *ngIf="universidadsarr.id!=0">
+    <option *ngFor="let type of universidadsarrTypesList$|async" [value]="type.id">{{type.nombre}}</option>
+    </select>
+
+    <select class="form-control" name="tipoUsuarioId" id="tipoUsuarioId" [(ngModel)]
+    = "tipoUsuarioId" *ngIf="universidadsarr.id==0">
+    <option *ngFor="let type of universidadsarrTypesList$|async" [value]="type.id">{{type.nombre}}</option>
+    </select>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" [(ngModel)]="nombre" name="nombre">
+  </div>
+
+
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo</label>
+    <input type="text" class="form-control" [(ngModel)]="correo" name="correo">
+  </div>
+
+
+  <div class="mb-3">
+    <label for="telefono" class="form-label">Telefono</label>
+    <input type="number" class="form-control" [(ngModel)]="telefono" name="telefono">
+  </div>
+  <button (click)="addUsuario()" *ngIf="universidadsarr.id==0" class="btn btn-primary">
+    Add
+  </button>
+  <button (click)="updateUsuario()" *ngIf="universidadsarr.id!=0" class="btn btn-primary">
+    Update
+  </button>
+</form>

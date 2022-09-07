@@ -1,0 +1,16 @@
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
+    <h2 class="form-signin-heading">Inicio Sesión</h2>
+      <div *ngIf="invalidLogin" class="alert alert-danger">Usuario o Contraseña Invalida.</div>
+      <br/>
+      <label for="username" class="sr-only">Correo</label>
+      <input type="text" id="username" name="username" [(ngModel)]="credentials.username"
+        class="form-control" placeholder="Ingrese El Correo" required>
+      <br/>
+      <label for="password" class="sr-only">Contraseña</label>
+      <input type="password" id="password" name="password" [(ngModel)]="credentials.password"
+        class="form-control" placeholder="Ingrese La Contraseña" required>
+      <br/>
+      <button class="btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+  </form>
+</div>
